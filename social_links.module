@@ -29,6 +29,13 @@ function social_links_help($route_name, RouteMatchInterface $route_match) {
 /**
  * Implements hook_entity_extra_field_info().
  */
+ function social_links_theme() {
+   
+ }
+
+/**
+ * Implements hook_entity_extra_field_info().
+ */
 function social_links_entity_extra_field_info() {
   $entity_manager = \Drupal::entityManager();
   $entity_types = $entity_manager->getDefinitions();

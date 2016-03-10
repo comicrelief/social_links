@@ -17,7 +17,7 @@ use \Drupal\Core\Extension\ModuleHandlerInterface;
 class SocialLinks {
 
   private $social_links = [];
-  private $theme_function = 'example_social_theme_callback';
+  private $theme_function = 'social_links_theme';
 
   public function __construct(&$links, $override = false) {
     $links = [] + $links;
