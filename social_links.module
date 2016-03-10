@@ -29,13 +29,6 @@ function social_links_help($route_name, RouteMatchInterface $route_match) {
 /**
  * Implements hook_entity_extra_field_info().
  */
- function social_links_theme() {
-   
- }
-
-/**
- * Implements hook_entity_extra_field_info().
- */
 function social_links_entity_extra_field_info() {
   $entity_manager = \Drupal::entityManager();
   $entity_types = $entity_manager->getDefinitions();
@@ -65,3 +58,27 @@ function social_links_entity_view(array &$build, EntityInterface $entity, Entity
     $build['social_links'] = $social_links->renderLinks($entity);
   }
 }
+
+/**
+ * Implements hook_entity_extra_field_info().
+ */
+ //function social_links_theme() {
+
+ //}
+
+ /**
+  * Implements hook_entity_extra_field_info().
+  */
+ function social_links_provider_email(&$link, $entity) {
+   $subject = '';
+   $body = $subject . '%0D' . $link['#path'];
+   $link['#path'] = 'mailto:?subject=' . $subject . '&body=' . $body;
+ }
+
+ /**
+  * Implements hook_entity_extra_field_info().
+  */
+ function social_links_provider_popup(&$link, $entity) {
+   $link['#options']['attributes']['class'][] = 'social-link-popup';
+   $link['#options']['attributes']['title'] = 'z';
+ }
