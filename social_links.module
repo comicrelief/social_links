@@ -30,9 +30,9 @@ function social_links_help($route_name, RouteMatchInterface $route_match) {
  * Implements hook_entity_extra_field_info().
  */
 function social_links_entity_extra_field_info() {
-  $extra = [];
   $entity_manager = \Drupal::entityManager();
   $entity_types = $entity_manager->getDefinitions();
+  $extra = [];
 
   foreach (array_keys($entity_types) as $entity_type) {
     $bundles = $entity_manager->getBundleInfo($entity_type);
@@ -55,11 +55,6 @@ function social_links_entity_extra_field_info() {
 function social_links_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
   if ($display->getComponent('social_links')) {
     $social_links = new SocialLinks();
-    die('<pre>z:'.print_r($social_links,1).'</pre>');
-
-    $build['social_links'] = array(
-      '#markup' => $social_links->getMarkup(),
-      '#theme' => $social_links->getTheme(),
-    );
+    $build['social_links'] = $social_links->renderLinks($entity);
   }
 }
