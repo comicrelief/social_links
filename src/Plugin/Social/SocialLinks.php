@@ -66,7 +66,7 @@ class SocialLinks {
 
   public function addLinks($links) {
     if (is_array($links)) {
-      $this->social_links = $this->social_links + $links;
+      $this->social_links = array_merge($this->social_links, $links);
     }
   }
 
