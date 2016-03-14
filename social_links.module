@@ -69,16 +69,15 @@ function social_links_entity_view(array &$build, EntityInterface $entity, Entity
  /**
   * Implements hook_entity_extra_field_info().
   */
- function social_links_provider_email(&$link, $entity) {
+ function social_links_provider_email(&$link_options, $entity) {
    $subject = '';
-   $body = $subject . '%0D' . $link['#path'];
-   $link['#path'] = 'mailto:?subject=' . $subject . '&body=' . $body;
+   $body = $subject . '%0D' . $link_options['path'];
+   $link_options['path'] = 'mailto:?subject=' . $subject . '&body=' . $body;
  }
 
  /**
   * Implements hook_entity_extra_field_info().
   */
- function social_links_provider_popup(&$link, $entity) {
-   $link['#options']['attributes']['class'][] = 'social-link-popup';
-   $link['#options']['attributes']['title'] = 'z';
+ function social_links_provider_popup(&$link_options, $entity) {
+   $link_options['attributes']['class'][] = 'social-link-popup';
  }
