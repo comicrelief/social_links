@@ -105,7 +105,6 @@ class SocialLinks {
         ],
       ];
 
-
       if (isset($config['callback'])) {
         $config['callback']($link_options, $entity);
       }
