@@ -33,7 +33,7 @@ class SocialLinks {
 
   public function registerLinks($links) {
     $module_handler = \Drupal::moduleHandler();
-    $hook_links = $module_handler->invokeAll('social_links_alter', array($links));
+    $hook_links = $module_handler->invokeAll('social_links_alter', [$links]);
 
     if (!empty($hook_links)) {
       $links = $hook_links;
@@ -71,10 +71,10 @@ class SocialLinks {
   }
 
   public function renderLinks($entity, &$theme_override = '') {
-    return array(
+    return [
       '#items' => $this->getMarkup($entity),
       '#theme' => $this->getTheme($theme_override),
-    );
+    ];
   }
 
   public function getMarkup($entity) {
